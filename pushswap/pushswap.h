@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:07 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/14 11:49:44 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:41:39 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ typedef struct list {
 	struct list *next;
 } list;
 
+void stockpile(int argc, char **argv, list **head);
+void ft_quicksort(list **stack_a, list **stack_b);
+int ft_checktri(list **stack_a);
+int ft_take_pivot(list **stack);
 long int ft_atoi(char *str);
 void sa(list *current);
 void sb(list *current);

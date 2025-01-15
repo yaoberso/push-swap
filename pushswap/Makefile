@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	= pushswap
-CFLAGS	= -Wall -Wextra -Werror -Iprintf
+CFLAGS	= -Wall -Wextra -Werror -Iprintf -g3 -fsanitize=address
 CC		= gcc
 OBJS 	= $(SRCS:.c=.o)
 
@@ -26,6 +26,10 @@ SRCS	=	printf/ft_printf.c \
 			printf/ft_putunsint.c \
 			main.c \
 			utils.c \
+			algo.c \
+			instruction.c \
+			instruction2.c \
+			instruction3.c \
 
 # REGLES
 all: $(NAME)

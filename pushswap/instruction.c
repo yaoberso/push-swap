@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:44 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/13 13:15:31 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:57:05 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void pb(list **stack_a, list **stack_b)
 		return ;
 	}
 	list *temp;
-	temp = *stack_a;
+	temp = (*stack_a);
 	*stack_a = (*stack_a)->next;
 	temp->next = *stack_b;
-	*stack_b = temp;
+	(*stack_b) = temp;
 }
+
+
