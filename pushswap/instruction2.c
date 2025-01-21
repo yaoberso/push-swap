@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:14:27 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/13 13:17:17 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:39:34 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void ra(list **stack_a)
 {
+	ft_printf("ra\n");
 	list *temp;
 	list *cur;
 	temp = *stack_a;
@@ -28,6 +29,7 @@ void ra(list **stack_a)
 }
 void rb(list **stack_b)
 {
+	ft_printf("rb\n");
 	list *temp;
 	list *cur;
 	temp = *stack_b;
@@ -42,11 +44,13 @@ void rb(list **stack_b)
 }
 void rr(list **stack_a, list **stack_b)
 {
+	ft_printf("rr\n");
 	rb(stack_b);
 	ra(stack_a);
 }
 void rra(list **stack_a)
 {
+	ft_printf("rra\n");
 	list *temp = NULL;
 	list *cur;
 	cur = *stack_a;
@@ -61,6 +65,7 @@ void rra(list **stack_a)
 }
 void rrb(list **stack_b)
 {
+	ft_printf("rrb\n");
 	list *temp = NULL;
 	list *cur;
 	cur = *stack_b;

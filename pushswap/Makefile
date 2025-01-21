@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	= pushswap
-CFLAGS	= -Wall -Wextra -Werror -Iprintf -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -Iprintf -g3
 CC		= gcc
 OBJS 	= $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:59 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/15 13:57:25 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:41:41 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void stockpile(int argc, char **argv, list **head)
 	list *current = NULL;
 
 	i = 2;
-	head = malloc(sizeof(list));
+	*head = malloc(sizeof(list));
 	(*head)->value = ft_atoi(argv[1]);
 	(*head)->next = NULL;
 	current = (*head);
@@ -34,29 +34,37 @@ void stockpile(int argc, char **argv, list **head)
 
 int main(int argc, char **argv)
 {
-	if (argc < 3)
-	{
-		printf("Error\n");
-		exit(0);
-	}
-	list *curent;
-	list *stack_a;
-	list **stack_b = NULL;
-	int i;
-
-	stockpile(argc, argv, &stack_a);
-	ft_quicksort(&stack_a, stack_b);
-	i = 0;
-	curent = stack_a;
-	while(i < (argc - 1))
-	{
-		printf("%i", curent->value);
-		if (i != (argc - 2))
-		{
-			printf(" ");
-		}
-		curent = curent->next;
-		i++;
-	}
-	return (0);
+	if (argc < 2)
+    {
+        printf("Error\n");
+        return 1;
+    }
+    list *stack_a = NULL;
+    list *stack_b = NULL;
+	int size;
+	
+	size = argc - 1;
+    stockpile(argc, argv, &stack_a);
+    if (!stack_a)
+    {
+        printf("Error\n");
+        return 1;
+    }
+    ft_quicksort(&stack_a, &stack_b, size);
+    list *temp = stack_a;
+    while (temp)
+    {
+        ft_printf("%d", temp->value);
+        if (temp->next)
+            ft_printf(" ");
+        temp = temp->next;
+    }
+    ft_printf("\n");
+    while (stack_a)
+    {
+        temp = stack_a;
+        stack_a = stack_a->next;
+        free(temp);
+    }
+    return 0;
 }

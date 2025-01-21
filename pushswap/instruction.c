@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:44 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/15 13:57:05 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:39:53 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void sa(list *current)
 {
+	ft_printf("sa\n");
 	if (!current || !current->next)
 		return ;
 	int temp;
@@ -24,6 +25,7 @@ void sa(list *current)
 
 void sb(list *current)
 {
+	ft_printf("sb\n");
 	if (!current || !current->next)
 		return ;
 	int temp;
@@ -33,11 +35,13 @@ void sb(list *current)
 }
 void ss(list *current)
 {
+	ft_printf("ss\n");
 	sb(current);
 	sa(current);
 }
 void pa(list **stack_a, list **stack_b)
 {
+	ft_printf("pa\n");
 	if(*stack_b == NULL)
 	{
 		return ;
@@ -50,6 +54,7 @@ void pa(list **stack_a, list **stack_b)
 }
 void pb(list **stack_a, list **stack_b)
 {
+	ft_printf("pb\n");
 	if(*stack_a == NULL)
 	{
 		return ;
