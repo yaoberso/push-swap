@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 14:10:40 by yaoberso          #+#    #+#             */
+/*   Updated: 2025/01/27 14:25:39 by yaoberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int find_max(list **stack)
+int	find_max(t_list **stack)
 {
-	list *curent;
-	int max;
+	t_list	*curent;
+	int		max;
 
 	curent = (*stack);
 	max = curent->value;
-	while(curent->next != NULL)
+	while (curent->next != NULL)
 	{
 		if (curent->next->value > max)
 		{
@@ -18,14 +30,14 @@ int find_max(list **stack)
 	return (max);
 }
 
-int find_min(list **stack)
+int	find_min(t_list **stack)
 {
-	list *curent;
-	int min;
+	t_list	*curent;
+	int		min;
 
 	curent = (*stack);
 	min = curent->value;
-	while(curent->next != NULL)
+	while (curent->next != NULL)
 	{
 		if (curent->next->value < min)
 		{
@@ -36,55 +48,65 @@ int find_min(list **stack)
 	return (min);
 }
 
-int find_max_position(list *stack)
+int	find_max_position(t_list *stack)
 {
-    int max_pos = 0;
-    int pos = 0;
-    int max_value = stack->value;
-    list *current = stack;
+	int		max_pos;
+	int		pos;
+	int		max_value;
+	t_list	*current;
 
-    while (current)
-    {
-        if (current->value > max_value)
-        {
-            max_value = current->value;
-            max_pos = pos;
-        }
-        current = current->next;
-        pos++;
-    }
-    return max_pos;
+	max_pos = 0;
+	pos = 0;
+	max_value = stack->value;
+	current = stack;
+	while (current)
+	{
+		if (current->value > max_value)
+		{
+			max_value = current->value;
+			max_pos = pos;
+		}
+		current = current->next;
+		pos++;
+	}
+	return (max_pos);
 }
 
-int find_min_position(list *stack)
+int	find_min_position(t_list *stack)
 {
-    int min_pos = 0;
-    int pos = 0;
-    int min_value = stack->value;
-    list *current = stack;
+	int		min_pos;
+	int		pos;
+	int		min_value;
+	t_list	*current;
 
-    while (current)
-    {
-        if (current->value < min_value)
-        {
-            min_value = current->value;
-            min_pos = pos;
-        }
-        current = current->next;
-        pos++;
-    }
-    return min_pos;
+	min_pos = 0;
+	pos = 0;
+	min_value = stack->value;
+	current = stack;
+	while (current)
+	{
+		if (current->value < min_value)
+		{
+			min_value = current->value;
+			min_pos = pos;
+		}
+		current = current->next;
+		pos++;
+	}
+	return (min_pos);
 }
 
-int stack_size(list *stack)
+int	stack_size(t_list *stack)
 {
-    int size = 0;
-    list *current = stack;
+	int		size;
+	t_list	*current;
 
-    while (current != NULL)
-    {
-        size++;
-        current = current->next;
-    }
-    return size;
+	size = 0;
+	current = stack;
+	while (current != NULL)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
 }

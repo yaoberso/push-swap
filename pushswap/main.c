@@ -3,60 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:21:59 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/23 11:53:52 by yann             ###   ########.fr       */
+/*   Updated: 2025/01/27 14:18:37 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void stockpile(int argc, char **argv, list **head)
+void	stockpile(int argc, char **argv, t_list **head)
 {
-    int i;
-    list *current = NULL;
+	int		i;
+	t_list	*current;
 
-    i = 2;
-    *head = malloc(sizeof(list));
-    if (!(*head))
-    {
-        ft_printf("Memory allocation error\n");
-        exit(EXIT_FAILURE);
-    }
-    (*head)->value = ft_atoi(argv[1]);
-    (*head)->next = NULL;
-    current = (*head);
-
-    while (i < argc)
-    {
-        current->next = malloc(sizeof(list));
-        if (!current->next)
-        {
-            ft_printf("Memory allocation error\n");
-            exit(EXIT_FAILURE);
-        }
-        current = current->next;
-        current->value = ft_atoi(argv[i]);
-        current->next = NULL;
-        i++;
-    }
+	current = NULL;
+	i = 2;
+	*head = malloc(sizeof(t_list));
+	if (!(*head))
+	{
+		ft_printf("Memory allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+	(*head)->value = ft_atoi(argv[1]);
+	(*head)->next = NULL;
+	current = (*head);
+	while (i < argc)
+	{
+		current->next = malloc(sizeof(t_list));
+		if (!current->next)
+			return ;
+		current = current->next;
+		current->value = ft_atoi(argv[i]);
+		current->next = NULL;
+		i++;
+	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    list *stack_a = NULL;
-    list *stack_b = NULL;
-    int size;
-    if (argc < 2)
-        return (1);
-    size = argc - 1;
-    check_error(argv);
-    stockpile(argc, argv, &stack_a);
-    ft_algo(&stack_a, &stack_b, size);
-    print_stack(stack_a);
-    ft_printf("\n");
-    free_stack(stack_a);
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		size;
 
-    return (0);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (1);
+	size = argc - 1;
+	check_error(argv);
+	stockpile(argc, argv, &stack_a);
+	transform_to_index(&stack_a);
+	ft_algo(&stack_a, &stack_b, size);
+	free_stack(stack_a);
+	return (0);
 }
