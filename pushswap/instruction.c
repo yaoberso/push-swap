@@ -6,7 +6,7 @@
 /*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:44 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/20 19:39:53 by yann             ###   ########.fr       */
+/*   Updated: 2025/01/22 16:00:50 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void sa(list *current)
 {
+	int temp;
 	ft_printf("sa\n");
 	if (!current || !current->next)
 		return ;
-	int temp;
 	temp = current->value;
 	current->value = current->next->value;
 	current->next->value = temp;
@@ -25,10 +25,10 @@ void sa(list *current)
 
 void sb(list *current)
 {
+	int temp;
 	ft_printf("sb\n");
 	if (!current || !current->next)
 		return ;
-	int temp;
 	temp = current->value;
 	current->value = current->next->value;
 	current->next->value = temp;
@@ -41,12 +41,12 @@ void ss(list *current)
 }
 void pa(list **stack_a, list **stack_b)
 {
+	list *temp;
 	ft_printf("pa\n");
 	if(*stack_b == NULL)
 	{
 		return ;
 	}
-	list *temp;
 	temp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	temp->next = *stack_a;
@@ -54,12 +54,12 @@ void pa(list **stack_a, list **stack_b)
 }
 void pb(list **stack_a, list **stack_b)
 {
+	list *temp;
 	ft_printf("pb\n");
 	if(*stack_a == NULL)
 	{
 		return ;
 	}
-	list *temp;
 	temp = (*stack_a);
 	*stack_a = (*stack_a)->next;
 	temp->next = *stack_b;

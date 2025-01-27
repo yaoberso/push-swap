@@ -8,7 +8,7 @@ void checkdbl(char **argv)
 	i = 1;
 	while(argv[i] != NULL)
 	{
-		j = i;
+		j = i + 1;
 		while(argv[j] != NULL)
 		{
 			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
@@ -16,9 +16,9 @@ void checkdbl(char **argv)
 				ft_printf("Error\n");
 				exit (1);
 			}
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 
@@ -38,9 +38,9 @@ void checkifalph(char **argv)
 				ft_printf("Error\n");
 				exit (1);
 			}
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 void check_error(char **argv)

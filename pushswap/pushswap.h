@@ -6,7 +6,7 @@
 /*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:07 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/21 10:47:43 by yann             ###   ########.fr       */
+/*   Updated: 2025/01/26 14:36:17 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,24 @@
 #include <stdio.h>
 #include "printf/ft_printf.h"
 
-typedef struct list {
+typedef struct s_list {
 	int value;
-	struct list *next;
+	struct s_list *next;
 } list;
 
+void free_chunk(int **chunk, int size);
+int find_position(list **stack_a, int value);
+int **set_chunk(int min, int max, int nb_chunk);
+int stack_size(list *stack);
+int find_min(list **stack);
+int find_max(list **stack);
+int find_min_position(list *stack);
+int find_max_position(list *stack);
+void check_error(char **argv);
+void free_stack(list *stack);
+void print_stack(list *stack);
 void stockpile(int argc, char **argv, list **head);
-void ft_quicksort(list **stack_a, list **stack_b, int size);
+void ft_algo(list **stack_a, list **stack_b, int size);
 int ft_checktri(list **stack_a);
 int ft_take_pivot(list **stack, int size);
 long int ft_atoi(char *str);
