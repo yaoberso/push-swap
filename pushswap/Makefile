@@ -36,6 +36,7 @@ SRCS	=	printf/ft_printf.c \
 			index_utils.c \
 			utilsalgo.c \
 			utilschunk.c \
+			split.c \
 
 # REGLES
 all: $(NAME)

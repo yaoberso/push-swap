@@ -3,38 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:10:48 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/27 14:21:47 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:34:29 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	**set_chunk(int min, int max, int nb_chunk)
+int **set_chunk(int min, int max, int nb_chunk)
 {
-	int	**chunks;
-	int	interval;
-	int	i;
+    int **chunks;
+    int i;
+    t_chunk_data data;
 
-	i = 0;
-	chunks = ft_set_chunk_malloc(nb_chunk);
-	if (!chunks)
-		return (NULL);
-	interval = (max - min + 1) / nb_chunk;
-	while (i < nb_chunk)
-	{
-		chunks[i] = ft_set_chunk_allocate_chunk();
-		if (!chunks[i])
-		{
-			ft_set_chunk_free(chunks, i);
-			return (NULL);
-		}
-		ft_set_chunk_fill_chunk(chunks[i], &min, interval, i, nb_chunk, max);
-		i++;
-	}
-	return (chunks);
+    i = 0;
+    chunks = ft_set_chunk_malloc(nb_chunk);
+    if (!chunks)
+        return (NULL);
+    data.min = min;
+    data.max = max;
+    data.interval = (max - min + 1) / nb_chunk;
+    data.nb_chunk = nb_chunk;
+    while (i < nb_chunk)
+    {
+        chunks[i] = ft_set_chunk_allocate_chunk();
+        if (!chunks[i])
+        {
+            ft_set_chunk_free(chunks, i);
+            return (NULL);
+        }
+        ft_set_chunk_fill_chunk(chunks[i], &data, i);
+        i++;
+    }
+    return (chunks);
 }
 
 int	find_position(t_list **stack_a, int value)

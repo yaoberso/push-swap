@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilschunk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:11:07 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/27 14:11:13 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:35:46 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@ int	*ft_set_chunk_allocate_chunk(void)
 	return (chunk);
 }
 
-void	ft_set_chunk_fill_chunk(int *chunk, int *min, int interval, int i,
-		int nb_chunk, int max)
+void	ft_set_chunk_fill_chunk(int *chunk, t_chunk_data *data, int i)
 {
-	chunk[0] = *min;
-	if (i == nb_chunk - 1)
-		chunk[1] = max;
-	else
-		chunk[1] = *min + interval;
-	*min = *min + interval;
+	chunk[0] = data->min;
+    if (i == data->nb_chunk - 1)
+        chunk[1] = data->max;
+    else
+        chunk[1] = data->min + data->interval;
+    data->min += data->interval;
 }
 
 void	ft_set_chunk_free(int **chunks, int i)

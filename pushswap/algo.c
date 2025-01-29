@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:09:26 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/27 14:17:32 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:35:18 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ void	ft_trois(t_list **stack_a)
 		rra(stack_a);
 }
 
+void	ft_quatre(t_list **stack_a, t_list **stack_b)
+{
+	ft_cinq_move_min(stack_a, stack_b);
+	ft_trois(stack_a);
+	pa(stack_a, stack_b);
+}
+
 void	ft_cinq(t_list **stack_a, t_list **stack_b)
 {
 	ft_cinq_move_min(stack_a, stack_b);
@@ -63,20 +70,19 @@ void	ft_more5(t_list **stack_a, t_list **stack_b, int nb_chunk)
 
 void	ft_algo(t_list **stack_a, t_list **stack_b, int size)
 {
+	if (size == 2)
+	{
+		if ((*stack_a)->value > (*stack_a)->next->value)
+			ra(stack_a);
+	}
 	if (size == 3)
-	{
 		ft_trois(stack_a);
-	}
+	if (size == 4)
+		ft_quatre(stack_a, stack_b);
 	if (size == 5)
-	{
 		ft_cinq(stack_a, stack_b);
-	}
 	if (size <= 100 && size > 5)
-	{
 		ft_more5(stack_a, stack_b, 5);
-	}
 	else if (size > 100)
-	{
 		ft_more5(stack_a, stack_b, 11);
-	}
 }

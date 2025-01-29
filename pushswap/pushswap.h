@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:12:07 by yaoberso          #+#    #+#             */
-/*   Updated: 2025/01/27 14:17:00 by yaoberso         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:40:57 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,26 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+typedef struct s_chunk_data
+{
+	int	min;
+	int	max;
+	int	interval;
+	int	nb_chunk;
+}	t_chunk_data;
+
 typedef struct s_list
 {
 	int				value;
 	struct s_list	*next;
 }					t_list;
 
+void				free_split(char **split);
+int					ft_count(char **arg);
+char				**ft_split(char *str);
 void				ft_set_chunk_free(int **chunks, int i);
-void				ft_set_chunk_fill_chunk(int *chunk, int *min, int interval,
-						int i, int nb_chunk, int max);
+void				ft_set_chunk_fill_chunk(int *chunk, t_chunk_data *data,
+						int i);
 int					*ft_set_chunk_allocate_chunk(void);
 int					**ft_set_chunk_malloc(int nb_chunk);
 int					**ft_plusde5_set_chunks(t_list **stack_a, int nb_chunk);
@@ -46,7 +57,7 @@ int					find_min_position(t_list *stack);
 int					find_max_position(t_list *stack);
 void				check_error(char **argv);
 void				free_stack(t_list *stack);
-void				stockpile(int argc, char **argv, t_list **head);
+void				stockpile(int argc, char **argv, t_list **head, int v);
 void				ft_algo(t_list **stack_a, t_list **stack_b, int size);
 long int			ft_atoi(char *str);
 void				sa(t_list *current);
